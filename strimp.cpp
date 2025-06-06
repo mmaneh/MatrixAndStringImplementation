@@ -19,6 +19,9 @@
         }
         String::~String() {
             delete[] data_;
+            size_ = 0;
+            data_ = nullptr;
+            
         }
         size_t String::length() const {
             return size_;

@@ -18,17 +18,23 @@ Matrix::~Matrix() {
         delete[] data_[i];
     }
     delete[] data_;
+    row_ = 0;
+    col_ = 0;
+    data_ = nullptr;
+    
 }
 
 void Matrix::set(size_t row, size_t col, double value) {
     if(row >= row_ || col >= col_) {
         std::cout << "you went over the bounds of the matrix" << std::endl;
+        return;
     }
     data_[row][col] = value;
 }
 double Matrix::get(size_t row, size_t col)const {
     if(row >= row_ || col >= col_) {
         std::cout << "you went over the bounds of the matrix" << std::endl;
+        return 0;
     }
     return data_[row][col];
 }

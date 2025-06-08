@@ -30,12 +30,12 @@ Matrix::Matrix(int row, int col) : row_(row), col_(col){
  }
 
  Matrix::Matrix(Matrix&& otr){
-    row_ = otr->row_;
-    col_ = otr->col_;
-    data_ = otr->data_;
-    otr->data_ = nullptr;
-    otr->row_ = 0;
-    otr->col_ = 0;
+    row_ = otr.row_;
+    col_ = otr.col_;
+    data_ = otr.data_;
+    otr.data_ = nullptr;
+    otr.row_ = 0;
+    otr.col_ = 0;
 }
 Matrix::~Matrix() {
     for (int i = 0; i < row_; ++i) {

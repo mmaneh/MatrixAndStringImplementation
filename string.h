@@ -9,6 +9,7 @@ class String {
         String();
         String(const char* str);
         ~String();
+        String(String&& otr);
         size_t length() const;
         const char* access() const;
         void print() const;

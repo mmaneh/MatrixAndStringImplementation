@@ -11,7 +11,8 @@ class Matrix{
         double** data_;
     public:
         Matrix();
-
+        Matrix(const Matrix& otr);
+        Matrix(Matrix&& otr);
         Matrix(int row, int col);
         ~Matrix();
 

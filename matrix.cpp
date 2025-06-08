@@ -12,7 +12,31 @@ Matrix::Matrix(int row, int col) : row_(row), col_(col){
         data_[i] = new double[col_];
     }
 }
+ Matrix::Matrix(const Matrix& otr){
+     if (row_ < otr->row_) {
+         data_ = new double*[otr->row_];
+         row_  = otr->row;
+     }
+     for (int i = 0; i < row_; ++i) {
+         data_[i] = new double[otr->col_];
+         col_ = otr->col;
+     }
+     for (int i = 0; i < row_; ++i) {
+         for (int j = 0; j < col_; ++j) {
+             data_[i][j] = otr->data_[i][j];
+         }
+     }
+     data_ = otr->data;
+ }
 
+ Matrix::Matrix(Matrix&& otr){
+    row_ = otr->row_;
+    col_ = otr->col_;
+    data_ = otr->data_;
+    otr->data_ = nullptr;
+    otr->row_ = 0;
+    otr->col_ = 0;
+}
 Matrix::~Matrix() {
     for (int i = 0; i < row_; ++i) {
         delete[] data_[i];

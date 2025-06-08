@@ -13,20 +13,21 @@ Matrix::Matrix(int row, int col) : row_(row), col_(col){
     }
 }
  Matrix::Matrix(const Matrix& otr){
-     if (row_ < otr->row_) {
-         data_ = new double*[otr->row_];
-         row_  = otr->row;
-     }
+         row_  = otr.row_;
+         col_ = otr.col_;
+         data_ = new double*[row_];
+         
+     
      for (int i = 0; i < row_; ++i) {
-         data_[i] = new double[otr->col_];
-         col_ = otr->col;
+         data_[i] = new double[col_];
+         
      }
      for (int i = 0; i < row_; ++i) {
          for (int j = 0; j < col_; ++j) {
-             data_[i][j] = otr->data_[i][j];
+             data_[i][j] = otr.data_[i][j];
          }
      }
-     data_ = otr->data;
+    
  }
 
  Matrix::Matrix(Matrix&& otr){

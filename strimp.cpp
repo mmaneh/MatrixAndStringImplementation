@@ -18,10 +18,19 @@
             data_[size_] = '\0';
         }
 
+          String::String(const String& otr){
+            size_ = otr.size_;
+            data_ = new char[size_ + 1];
+            for (int i = 0; i < size_; ++i) {
+                data_[i] = otr.data_[i];
+            }
+            data_[size_] = '\0';
+        }
+
         String::String(String&& otr) {
                 data_ = otr.data_;
-                size_ = otr.size;
-                otr.size = 0;
+                size_ = otr.size_;
+                otr.size_ = 0;
                 otr.data_ =nullptr;
         }
         String::~String() {
